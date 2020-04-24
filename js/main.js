@@ -43,7 +43,6 @@ function load() {
 	document.getElementById("btn1").addEventListener('click', Encrypt);
 	document.getElementById("btn2").addEventListener('click', Decrypt);
 	const match = location.search.match(/a=([^&]*)/) // 匹配参数a，即密文
-	console.log(location)
 	if (match && match[1] !== '') {
 		document.getElementById("aesinput").value = match[1];
 		document.getElementById("btn2").click();
