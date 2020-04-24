@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width,height=device-height,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>AES加密</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/aes.js"></script>
+	<!--bootstrap-->
+	<link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body onload="load()">
+	<!--navbar-->
+	<nav class="navbar navbar-expand navbar-light bg-light">
+		<a class="navbar-brand" href="">AES工具</a>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link"></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link"></a>
+				</li>
+			</ul>
+		</div>
+		<div class="navbar-nav mr-auto">
+			<a class="nav-link ">Ver 0.2.2</a>
+		</div>
+	</nav>
+
+	<div id="ctl" class="form-group flex-my">
+		<div class="w-100 flex-my input-my">
+			<label class="label-my">明文</label>
+			<textarea rows="6" type="text" id="rawinput"></textarea>
+		</div>
+		<div class="w-100 flex-my input-my">
+			<label class="label-my">密文</label>
+			<textarea rows="3" type="text" id="aesinput"></textarea>
+		</div>
+		<div class="col control-items">
+			<input type="button" class="btn btn-outline-primary col-5 col-sm-4 col-md-3 col-lg-2 m-auto" value="点击加密"
+				id="btn1" />
+			<input type="button" class="btn btn-outline-primary col-5 col-sm-4 col-md-3 col-lg-2 m-auto" value="点击解密"
+				id="btn2" />
+			<div class="col-12">
+				<input class="m-auto" type="checkbox" id="copycheck" checked>自动复制加密分享链接
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+#ctl {
+    text-align: center;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+.flex-my {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-my {
+    font-size: large;
+    padding: 5px;
+    margin: 5px;
+}
+
+.ctl-item {
+    display: flex;
+}
+
+.input-my textarea {
+    width: 90%;
+}
+
+.control-items{
+    padding: 10px;
+    margin-top: 2%;
+}
