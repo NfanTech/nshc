@@ -4,38 +4,41 @@ const kdate = "" + kDate.getFullYear() + kmonth;
 const pwd = "NfaNteCh" + kdate;
 var baseurl = ''
 const headStr = 'U2FsdGVkX1' // aes密文前缀
+const copyText = (text) => {
+	// 中转
+	const copyText = document.getElementById("copytext")
+	copyText.innerHTML = text
+	// 复制
+	const range = document.createRange();
+	range.selectNode(copyText);
+	const selection = window.getSelection();
+	if (selection.rangeCount > 0) selection.removeAllRanges();
+	selection.addRange(range);
+	document.execCommand('Copy');
+	// 还原
+	selection.removeAllRanges()
+	copyText.innerHTML = ''
+}
 const Encrypt = () => {
-	let rawInput = document.getElementById("rawinput")
-	let aesInput = document.getElementById("aesinput")
+	const rawInput = document.getElementById("rawinput")
+	const aesInput = document.getElementById("aesinput")
 	const word = rawInput.value;
 	const aesvalue = CryptoJS.AES.encrypt(word, pwd).toString();
-	aesInput.value = baseurl + aesvalue.slice(10);
-	if (document.getElementById("copycheck").checked) {
-		copyOutput(aesInput)
-	}
 	aesInput.value = aesvalue.slice(10);
+
+	if (document.getElementById("copycheck").checked) {
+		copyText(baseurl + aesvalue.slice(10))
+	}
 }
 const Decrypt = () => {
-	let rawInput = document.getElementById("rawinput")
-	let aesInput = document.getElementById("aesinput")
+	const rawInput = document.getElementById("rawinput")
+	const aesInput = document.getElementById("aesinput")
 	const word = headStr + aesInput.value;
-	rawInput.value = CryptoJS.AES.decrypt(word, pwd).toString(CryptoJS.enc.Utf8);
+	const res = CryptoJS.AES.decrypt(word, pwd).toString(CryptoJS.enc.Utf8);
+	rawInput.value = res
+	
 	if (document.getElementById("copycheck").checked) {
-		copyOutput(rawInput)
-	}
-}
-const copyOutput = (ele) => {
-	if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-		//for ios
-		const range = document.createRange();
-		range.selectNode(ele);
-		window.getSelection().addRange(range);
-		document.execCommand("Copy");
-		window.getSelection().removeAllRanges();
-	} else {
-		//for other
-		ele.select();
-		document.execCommand("Copy");
+		copyText(res)
 	}
 }
 function load() {
